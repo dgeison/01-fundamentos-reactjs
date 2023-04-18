@@ -1,4 +1,4 @@
-import {format} from 'date-fns'
+import { format, formatDistanceToNow } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { Avatar } from './Avatar'
@@ -7,8 +7,13 @@ import styles from './Post.module.css'
 
 export function Post({ author, content, publishedAt }) {
 
-    const publishedAtFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'",{
+    const publishedAtFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
         locale: ptBR
+    })
+
+    const publishedDateRelativeToNow = formatDistanceToNow(publishedAt, {
+        locale: ptBR,
+        addSuffix: true
     })
 
 
@@ -23,17 +28,16 @@ export function Post({ author, content, publishedAt }) {
                     </div>
                 </div>
 
-                <time title="" dateTime='2023-04-09 22:30:00'>{publishedAtFormatted}</time>
+                <time title={publishedAtFormatted} dateTime={publishedAt.toISOString()}>{publishedDateRelativeToNow}</time>
             </header>
             <div className={styles.content}>
-                <p>🐍💻📊 - para representar a linguagem Python e sua aplicação em análise de dados</p>
-                <p> - para representar a grande comunidade de desenvolvedores trabalhando juntos na melhoria da linguagem Python</p>
-                <p>🤝{' '}<a href="#">aplicativos.</a></p>
-                <p>
-                    <a href="#">#novoaplicativo</a>{' '}
-                    <a href="#">#datascience</a>{' '}
-                    <a href="#">#portifolio</a>
-                </p>
+                {content.map(item => {
+                    if (item.type === 'paragraph') {
+                        return <p>{item.content}</p>
+                    } else if (item.type === 'link') {
+                        return <p><a href="#">{item.content}</a></p>
+                    }
+                })}
             </div>
 
             <form className={styles.commentForm}>
