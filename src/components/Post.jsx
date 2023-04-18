@@ -1,15 +1,16 @@
+import {format} from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
+
 import { Avatar } from './Avatar'
 import { Comment } from './Comment'
 import styles from './Post.module.css'
 
 export function Post({ author, content, publishedAt }) {
 
-    const publishedAtFormatted = new Intl.DateTimeFormat('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        hour: '2-digit',
-        minute: '2-digit',
-    }).format(publishedAt)
+    const publishedAtFormatted = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'",{
+        locale: ptBR
+    })
+
 
     return (
         <article className={styles.post}>
@@ -22,7 +23,7 @@ export function Post({ author, content, publishedAt }) {
                     </div>
                 </div>
 
-                <time title='22 de março às 22:30h' dateTime='2023-04-09 22:30:00'>Publicado há 1h</time>
+                <time title="" dateTime='2023-04-09 22:30:00'>{publishedAtFormatted}</time>
             </header>
             <div className={styles.content}>
                 <p>🐍💻📊 - para representar a linguagem Python e sua aplicação em análise de dados</p>
