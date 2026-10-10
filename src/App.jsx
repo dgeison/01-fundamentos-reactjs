@@ -1,77 +1,31 @@
-import { Post } from "./components/Post";
-import { Header } from "./components/Header";
-import { Sidebar } from "./components/Sidebar";
+import { Header } from './components/Header'
+import { Post } from './components/Post'
+import { Sidebar } from './components/Sidebar';
 
-import "./global.css";
-import styles from "./App.module.css";
+import styles from './App.module.css';
 
-const posts = [
-  {
-    id: 1,
-    author: {
-      avatarUrl: "https://github.com/dgeison.png",
-      name: "Dgeison Peixoto",
-      role: "Data Scientist",
-    },
-    content: [
-      {
-        type: "paragraph",
-        content:
-          "🐍💻📊 - para representar a linguagem Python e sua aplicação em análise de dados",
-      },
-      {
-        type: "paragraph",
-        content:
-          " - para representar a grande comunidade de desenvolvedores trabalhando juntos na melhoria da linguagem Python",
-      },
-      { type: "link", content: "jane.design/doctorcare" },
-    ],
-    publishedAt: new Date("2023-04-17 22:30:00"),
-  },
-  {
-    id: 2,
-    author: {
-      avatarUrl: "https://avatars.githubusercontent.com/u/67557314?v=4",
-      name: "Izadora Peixoto",
-      role: "Desenvolvedora Back-end",
-    },
-    content: [
-      {
-        type: "paragraph",
-        content:
-          "🐍💻📊 - para representar a linguagem Python e sua aplicação em análise de dados",
-      },
-      {
-        type: "paragraph",
-        content:
-          " - para representar a grande comunidade de desenvolvedores trabalhando juntos na melhoria da linguagem Python",
-      },
-      { type: "link", content: "jane.design/doctorcare" },
-    ],
-    publishedAt: new Date("2021-03-10 22:30:00"),
-  },
-];
+import './global.css'
 
-export function App() {
+
+function App() {
   return (
     <div>
       <Header />
-
       <div className={styles.wrapper}>
         <Sidebar />
         <main>
-          {posts.map((post) => {
-            return (
-              <Post
-                key={post.id}
-                author={post.author}
-                content={post.content}
-                publishedAt={post.publishedAt}
-              />
-            );
-          })}
+          <Post
+            author="Dgeison Peixoto"
+            content="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime itaque quas corporis beatae veritatis, reprehenderit asperiores vitae quod possimus qui dignissimos unde deleniti consequatur quae, repellat debitis sunt, est rerum!"
+          />
+          <Post
+            author="Gabriel Buzzi"
+            content="Um novo post muito legal"
+          />
         </main>
       </div>
     </div>
-  );
+  )
 }
+
+export default App

@@ -10,7 +10,7 @@
     border-radius: 8px;
 }
 
-.commentBox{
+.commentBox {
     flex: 1;
 }
 
@@ -44,7 +44,6 @@
     border: 0;
     color: var(--gray-400);
     cursor: pointer;
-    font-size: 0.875rem;
     line-height: 0;
     border-radius: 2px;
 }
@@ -67,10 +66,8 @@
     border: 0;
     color: var(--gray-400);
     cursor: pointer;
-
     display: flex;
     align-items: center;
-
     border-radius: 2px;
 }
 

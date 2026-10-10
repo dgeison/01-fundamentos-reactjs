@@ -14,7 +14,7 @@
     --red-500: #F75A68;
 }
 
-:focus{
+:focus {
     outline: transparent;
     box-shadow: 0 0 0 2px var(--green-500);
 }
@@ -29,14 +29,14 @@ body {
     background: var(--gray-900);
     color: var(--gray-300);
     -webkit-font-smoothing: antialiased;
-
 }
 
 body,
 input,
 textarea,
 button {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-size: 1rem;
+    /* 16px - Acessibilidade */
 }
